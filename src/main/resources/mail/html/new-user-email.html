@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title th:remove="all">Template for forgot password email</title>
+	<th:block th:include="html/fragments.html :: headerfiles"></th:block>
+	<style type="text/css">
+		@media (min-width:700px){.wm-half{width:50%;margin:auto;}}
+	</style>
+</head>
+<body>
+<div class="wm-half" style="width:100%;margin:auto;">
+	<div th:insert="html/fragments.html :: logo-header"></div>
+	
+	<div  style="text-align:center;padding-top:16px 0px">
+		<header style="padding:0.01em 16px">
+			<p style="font-size:24px;">Welcome to WaitMe</p>
+		</header>
+		<p th:text="'Hello ' + ${name} + ','"></p>
+		<p>Your manager has created an account for you at <a href="waitmeapp.ddns.net/login">https://waitmeapp.ddns.net/login</a> </p>
+		<p>Login with your new user name and this temporary password and change it in the user settings.</p>
+		<!-- Username -->
+		<p>Username: <strong th:text="${newUname}"></strong></p>
+		<!-- Temporary Password -->
+		<p>Password: <strong th:text="${newPasswd}"></strong></p>
+		<p>Your new PIN is below. It will be used to access the POS (Point of Sale)</p>
+		<!-- Temporary Password -->
+		<p><strong th:text="${newPin}"></strong></p>
+		<!-- Return to Login page -->	
+		<p style="margin:16px">Login with this new password and change it in the user preferences. It is recommended that you change it as soon as possible.</p>		
+	</div>
+	
+	<div th:insert="html/fragments.html :: footer(target=${email})"></div>
+</div>
+</body>
+</html>

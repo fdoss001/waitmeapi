@@ -1,0 +1,14 @@
+.errorbox {
+	visibility: hidden;
+	right: 18%;
+	width: 20%;
+	position: absolute;
+	z-index: 1;
+	margin:4px;
+}
+.errorbox i {
+	position: relative;
+	top: 5px;
+}
+.wm-half,.wm-quarter{float:left;width:100%}
+@media (min-width:800px){.wm-half{width:40%}.wm-quarter{width:30%}}

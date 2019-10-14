@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="logo-header" style="box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);text-align:center;margin-top:16px;">
+	<!-- Logo and Company Name -->
+		<div style="padding:16px;color:#fff; background-color:#2e4a62;">
+			<img th:src="|cid:${logo}" alt="WaitMe logo" style="width:25%;margin:auto;">
+		</div>	
+	</div>
+	
+	<div th:fragment="footer(target)">
+		<div style="box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);color:#fff; background-color:#2e4a62;text-align:center;margin-top:16px;">
+			<p>This email was sent to 
+				<a th:href="'mailto:' + ${target}" target="_blank" style="color:#dfd" th:text="${target}"></a>.
+			</p>
+		</div>
+		<p>This email was sent by WaitMe Restaurant Solutions.</p>
+	</div>
+</body>
+</html>
