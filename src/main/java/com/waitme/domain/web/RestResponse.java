@@ -10,7 +10,7 @@ import java.util.Map;
  * @since 1.0 2019-05-30
  */
 public class RestResponse {
-	private String message;
+	private String status;
 	private Map<String, Object> payload;
 	
 	public RestResponse() {} //needed for JSON
@@ -20,8 +20,8 @@ public class RestResponse {
 	 * @param message the response message to send to client
 	 * @param payload the objects to send to client in response
 	 */
-	public RestResponse(String message, Map<String, Object> payload) {
-		this.message = message;
+	public RestResponse(String status, Map<String, Object> payload) {
+		this.status = status;
 		this.payload = payload;
 	}
 
@@ -29,8 +29,8 @@ public class RestResponse {
 	 * Gets the response message
 	 * @return the message to send to client
 	 */
-	public String getMessage() {
-		return message;
+	public String getStatus() {
+		return status;
 	}
 
 	/**
