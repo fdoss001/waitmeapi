@@ -26,6 +26,10 @@ public class Company extends WMDomainObject implements RowMapper<Company> {
 	
 	public Company() {}
 	
+	public Company(int id) {
+		this.id = id;
+	}
+	
 	public Company(int id, String name, String dbname, CompanySettings settings) {
 		this.id = id;
 		this.name = name;

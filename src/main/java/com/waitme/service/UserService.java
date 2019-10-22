@@ -424,6 +424,33 @@ public class UserService {
 	}
 	
 	/**
+	 * Gets the user's basic info by id
+	 * @param companyid the companyid the employee belongs to
+	 * @param employeeid the employeeid to select by
+	 * @return the user
+	 * @throws NoResultException if user with given id not found
+	 */
+	public WMUser getSimpleWMUser(int companyid, int employeeid) throws NoResultException {
+		log.debug("Getting user by id '" + employeeid + "' for company '" + companyid + "'");
+		WMUser user = userDAO.employee_sel_id(companyid, employeeid);
+		log.debug("Found user '" + user.getUname() + "'");
+		return user;
+	}
+	
+	/**
+	 * Gets the user's basic info by username
+	 * @param userName the username to select by
+	 * @return the user
+	 * @throws NoResultException if user with given id not found
+	 */
+	public WMUser getSimpleWMUser(String userName) throws NoResultException {
+		log.debug("Getting user by username '" + userName + "'");
+		WMUser user = userDAO.employee_sel(userName);
+		log.debug("Found user '" + user.getUname() + "'");
+		return user;
+	}
+	
+	/**
 	 * Gets all the employees at the given location with the necessary info needed for POS
 	 * @param location the location to get the employees for
 	 * @return the list of all employees at the given location
@@ -642,7 +669,7 @@ public class UserService {
 	 * @param pass user's password to validate against
 	 * @throws FailedLoginException if credentials invalid
 	 */
-	public void loginWMUser(WMUser wmUser, String pass) throws AuthenticationException {
+	public WMUser loginWMUser(WMUser wmUser, String pass) throws AuthenticationException {
 		log.debug("Attempting to login user '" + wmUser.getUname() + "'");
 		validateCredentials(wmUser, pass);
 		//execute DB login
@@ -654,6 +681,11 @@ public class UserService {
 				+ "This will prevent multiple logins on different machines.");
 		loggedInUsers.remove(wmUser.getId()); //remove old token from server
 		loggedInUsers.put(wmUser.getId(), token);
+		
+		WMUser retUser = new WMUser(wmUser.getId(), wmUser.getUname(), wmUser.getFname(), wmUser.getLname());
+		retUser.setCompany(new Company(wmUser.getCompany().getId()));
+		retUser.setIconPath(wmUser.getIconPath());
+		return retUser;
 	}
 	
 	/**
