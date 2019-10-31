@@ -2,7 +2,7 @@
 <!DOCTYPE xml>
 <configuration>
  
-    <property name="LOGS" value="./logs" />
+    <springProperty scope="context" name="LOGS" source="logging.path" />
  
     <appender name="Console"
         class="ch.qos.logback.core.ConsoleAppender">
@@ -15,7 +15,7 @@
  
     <appender name="RollingFile"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/spring-boot-logger.log</file>
+        <file>${LOGS}/waitme.log</file>
         <encoder
             class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
