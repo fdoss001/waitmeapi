@@ -9,7 +9,7 @@ import com.waitme.domain.WMDomainObject;
  * @since 1.0 2019-04-04
  */
 public class PostalAddress extends WMDomainObject {
-	private String address1, address2, city, state, zip;
+	private String address1, address2, city, state, zip, country;
 
 	public PostalAddress() {}
 	
@@ -26,15 +26,17 @@ public class PostalAddress extends WMDomainObject {
 			this.city = params[2];
 			this.state = params[3];
 			this.zip = params[4];
+			this.country = params[5];
 		}
 	}
 	
-	public PostalAddress(String address1, String address2, String city, String state, String zip) {
+	public PostalAddress(String address1, String address2, String city, String state, String zip, String country) {
 		this.address1 = address1;
 		this.address2 = address2;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.country = country;
 	}
 
 	public String getAddress1() {
@@ -77,10 +79,18 @@ public class PostalAddress extends WMDomainObject {
 		this.zip = zip;
 	}
 	
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	@Override
 	public String toString() {
-		//the extra 8 at the end is to account for the commas and spaces
-		StringBuilder sb = new StringBuilder(address1.length() + address2.length() + city.length() + state.length() + zip.length() + 8);
+		//the extra 10 at the end is to account for the commas and spaces
+		StringBuilder sb = new StringBuilder(address1.length() + address2.length() + city.length() + state.length() + zip.length() + country.length() + 10);
 		if (!address1.isEmpty())
 			sb.append(address1 + ", ");
 		if (!address2.isEmpty())
@@ -90,13 +100,15 @@ public class PostalAddress extends WMDomainObject {
 		if (!state.isEmpty())
 			sb.append(state + ", ");
 		if (!zip.isEmpty())
-			sb.append(zip);
+			sb.append(zip + ", ");
+		if (!country.isEmpty())
+			sb.append(country);
 		return sb.toString();
 	}
 	
 	public String serialize() {
 		if (address1 == null || address1.isEmpty())
 			return null;
-		return address1 + ';' + address2 + ';' + city + ';' + state + ';' + zip;
+		return address1 + ';' + address2 + ';' + city + ';' + state + ';' + zip + ';' + country;
 	}
 }

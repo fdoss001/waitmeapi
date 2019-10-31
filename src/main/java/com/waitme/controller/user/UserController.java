@@ -2,6 +2,8 @@ package com.waitme.controller.user;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,11 +33,32 @@ class UserController {
 	@Autowired
 	UserService userService;
 	
+	Logger log = LoggerFactory.getLogger(UserController.class);
+	
 	@PostMapping(value="/getUser", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody RestResponse getUser(@RequestBody RestRequest request) throws NoResultException {
 		WMUser wmUser = userService.getSimpleWMUser((int) request.getPayload().get("companyId"), (int) request.getPayload().get("id"));
 		wmUser.setIconPath("https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png");
 		return new RestResponse("ok", Map.of("user", wmUser));
+	}
+	
+	@PostMapping(value="/updatePassword", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse updatePassword(@RequestBody RestRequest request) throws NoResultException {
+		return new RestResponse("ok", null);
+	}
+	
+	@PostMapping(value="/updatePin", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse updatePin(@RequestBody RestRequest request) throws NoResultException {
+		return new RestResponse("ok", null);
+	}
+	
+	@PostMapping(value="/updateBasic", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse updateBasic(@RequestBody RestRequest request) throws NoResultException {
+//		WMUser wmUser = new ObjectMapper().convertValue(request.getPayload(), WMUser.class);
+		return new RestResponse("ok", null);
 	}
 }
