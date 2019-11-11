@@ -489,18 +489,18 @@ public class UserService {
 	
 	/**
 	 * Gets all the basic info for all users whose position is at the given location
-	 * @param location the location to get employees for
+	 * @param locationid the location to get employees for
 	 * @return list of all users
 	 * @throws NoResultException if the location has no users
 	 */
-	public List<WMUser> getAllWMUsersBasic(int companyid, Location location) throws NoResultException {
+	public List<WMUser> getAllWMUsersBasic(int companyid, int locationid) throws NoResultException {
 		log.debug("Get all users with basic info only."); 
 		List<WMUser> wmUsers;
 		try {
-			wmUsers = userDAO.employee_sel_all_basic_location(companyid, location.getId());
+			wmUsers = userDAO.employee_sel_all_basic_location(companyid, locationid);
 		} catch (NoResultException e) {
-			log.warn("This location '" + location.getName() + "' has no users.");
-			throw new NoResultException("This location '" + location.getName() + "' has no users.");
+			log.warn("This location '" + locationid + "' has no users.");
+			throw new NoResultException("This location '" + locationid + "' has no users.");
 		}
 		log.debug("Successfully got all (" + wmUsers.size() + ") users with basic info only.");
 		return wmUsers;		
