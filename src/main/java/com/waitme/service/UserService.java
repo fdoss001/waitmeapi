@@ -685,6 +685,7 @@ public class UserService {
 		WMUser retUser = new WMUser(wmUser.getId(), wmUser.getUname(), wmUser.getFname(), wmUser.getLname());
 		retUser.setCompany(new Company(wmUser.getCompany().getId()));
 		retUser.setIconPath(wmUser.getIconPath());
+		retUser.setPosition(wmUser.getPosition());
 		return retUser;
 	}
 	
