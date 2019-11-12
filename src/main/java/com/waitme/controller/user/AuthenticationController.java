@@ -37,7 +37,6 @@ class AuthenticationController {
 	@PostMapping(value="/login")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody RestResponse login(@RequestBody RestRequest request) throws NoResultException, AuthenticationException {
-//		RestRequest req = new ObjectMapper().readValue(request.getReader(), RestRequest.class);
 		String userName = (String) request.getPayload().get("userName");
 		String password = (String) request.getPayload().get("password");
 		

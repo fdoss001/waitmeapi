@@ -425,6 +425,7 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 		} catch(SQLException e) {log.debug("No complete timsheet info for user '" + user.getUname() + "'");}
 		
 		//final setup
+		user.setIconPath("/usr/" + user.getUname() + "/icon.png");
 //		user.defaultIconPath();
 		
 		return user;
