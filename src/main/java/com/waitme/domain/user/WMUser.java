@@ -107,7 +107,7 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 				this.iconPath = props.getProperty("settings.basepath") + File.separator + uname + File.separator + props.getProperty("settings.icon") + "." + props.getProperty("settings.icon.default.ext");
 				try {
 					FileUtils.copyReplaceFile(Constants.BASE_PATH + File.separator + props.getProperty("settings.icon.default"), settingsDirStr + File.separator + props.getProperty("settings.icon") + "." + props.getProperty("settings.icon.default.ext"));
-				} catch (IOException e1) {
+				} catch (Exception e1) {
 					log.error("Error while copying and replacing the file.");
 					log.error(e1.getMessage());
 				}
@@ -425,8 +425,8 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 		} catch(SQLException e) {log.debug("No complete timsheet info for user '" + user.getUname() + "'");}
 		
 		//final setup
-		user.setIconPath("/usr/" + user.getUname() + "/icon.png");
-//		user.defaultIconPath();
+//		user.setIconPath("/usr/" + user.getUname() + "/icon.png");
+		user.defaultIconPath();
 		
 		return user;
 	}
