@@ -51,7 +51,7 @@ class AdminController {
 	@PostMapping(value="/getEmployeeById", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody RestResponse getEmployeeById(@RequestBody RestRequest request) throws NoResultException {
-		WMUser wmUser = userService.getSimpleWMUser((int) request.getPayload().get("companyId"), (int) request.getPayload().get("id"));
+		WMUser wmUser = userService.getWMUserById((int) request.getPayload().get("companyId"), (int) request.getPayload().get("id"));
 		return new RestResponse("ok", Map.of("employee", wmUser));
 	}
 	
