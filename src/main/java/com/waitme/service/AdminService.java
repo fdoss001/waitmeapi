@@ -1,6 +1,5 @@
 package com.waitme.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.waitme.config.WMProperties;
 import com.waitme.domain.restaurant.Location;
 import com.waitme.domain.restaurant.Table;
-import com.waitme.domain.user.AjaxModule;
 import com.waitme.domain.user.Module;
 import com.waitme.domain.user.Permission;
 import com.waitme.domain.user.Position;
@@ -342,17 +340,7 @@ public class AdminService {
 		List<SubModule> subModules = null;
 		try {
 			subModules = adminDAO.sub_module_module_sel(moduleid);
-		} catch (NoResultException e) {log.error("Waitme always has sub modules. This should never happen.");}
-		
-		for (SubModule s : subModules) {
-			log.debug("\t\tFound submodule '" + s.getName() + "'. Getting all ajax modules for it.");
-			List<AjaxModule> ajaxModules = new ArrayList<AjaxModule>(0);
-			try {
-				ajaxModules = adminDAO.ajax_module_sub_module_sel(s.getId());
-			} catch (NoResultException e) {log.error("This sub module '" + s.getName() + "' has no ajax modules.");}
-			s.setAjaxModules(ajaxModules);
-			log.debug("\t\tSuccessfully got all (" + ajaxModules.size() + ") ajax modules for submodule '" + s.getName() + "'");
-		}
+		} catch (NoResultException e) {log.error("Waitme always has sub modules. This should never happen.");}		
 		log.debug("\tSuccessfully got all (" + subModules.size() + ") sub modules for module with id '" + moduleid + "'");
 		return subModules;
 	}

@@ -19,7 +19,6 @@ import com.waitme.domain.restaurant.Company;
 import com.waitme.domain.restaurant.Location;
 import com.waitme.config.Constants;
 import com.waitme.config.WMProperties;
-import com.waitme.domain.user.AjaxModule;
 import com.waitme.domain.user.EPermission;
 import com.waitme.domain.user.Module;
 import com.waitme.domain.user.Permission;
@@ -865,16 +864,6 @@ public class UserService {
 			subModules = userDAO.employee_sub_module_sel(companyid, employeeid, moduleid);
 		} catch (NoResultException e) {
 			throw new NoAuthorizedModulesException("User has no sub modules for module '" + moduleid + "'");
-		}
-		for (SubModule sm : subModules) {
-			log.debug("\t\tFound submodule '" + sm.getName() + "'. Getting ajax modules");
-			try {
-				List<AjaxModule> ajaxModules = adminDAO.ajax_module_sub_module_sel((int) sm.getId());
-				sm.setAjaxModules(ajaxModules);
-				log.debug("\t\tAdded all ajax modules to submodule '" + sm.getName() + "'");
-			} catch (NoResultException e) {
-				log.debug("Sub module '" + sm.getName() + "' has no ajax modules. Continuing...");
-			}
 		}
 		log.debug("Finished getting all modules");
 		

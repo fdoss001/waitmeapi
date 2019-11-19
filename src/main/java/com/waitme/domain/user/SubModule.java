@@ -2,8 +2,6 @@ package com.waitme.domain.user;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
@@ -21,7 +19,6 @@ public class SubModule extends WMDomainObject implements RowMapper<SubModule> {
 	private int id;
 	private String name;
 	private String url;
-	private List<AjaxModule> ajaxModules;
 	private boolean sel, ins, upd, del;
 	
 	@JsonIgnore
@@ -29,15 +26,14 @@ public class SubModule extends WMDomainObject implements RowMapper<SubModule> {
 	
 	public SubModule() {}
 	
-	public SubModule(int id, String name, String url, List<AjaxModule> ajaxModules) {
-		this(id, name, url, ajaxModules, true, true, true, false);
+	public SubModule(int id, String name, String url) {
+		this(id, name, url, true, true, true, false);
 	}
 	
-	public SubModule(int id, String name, String url, List<AjaxModule> ajaxModules, boolean sel, boolean ins, boolean upd, boolean del) {
+	public SubModule(int id, String name, String url, boolean sel, boolean ins, boolean upd, boolean del) {
 		this.id = id;
 		this.name = name;
 		this.url = url;
-		this.ajaxModules = ajaxModules;
 		this.sel = sel;
 		this.ins = ins;
 		this.upd = upd;
@@ -66,14 +62,6 @@ public class SubModule extends WMDomainObject implements RowMapper<SubModule> {
 	
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<AjaxModule> getAjaxModules() {
-		return ajaxModules;
-	}
-
-	public void setAjaxModules(List<AjaxModule> ajaxModules) {
-		this.ajaxModules = ajaxModules;
 	}
 
 	public boolean isSel() {

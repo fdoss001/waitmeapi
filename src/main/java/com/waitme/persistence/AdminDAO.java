@@ -14,7 +14,6 @@ import com.waitme.utils.DBUtils;
 import com.waitme.exception.DeleteException;
 import com.waitme.exception.DuplicateException;
 import com.waitme.exception.NoResultException;
-import com.waitme.domain.user.AjaxModule;
 import com.waitme.domain.user.Module;
 import com.waitme.domain.user.Permission;
 
@@ -95,10 +94,6 @@ public class AdminDAO {
 	
 	public List<SubModule> sub_module_module_sel(int moduleid) throws NoResultException {
 		return DBUtils.listSelectHelper(-1, spProps.getProperty("sub_module_module_sel"), new SubModule(), moduleid);
-	}
-	
-	public List<AjaxModule> ajax_module_sub_module_sel(int submoduleid) throws NoResultException {
-		return DBUtils.listSelectHelper(-1, spProps.getProperty("ajax_module_sub_module_sel"), new AjaxModule(), submoduleid);
 	}
 	
 	public List<Permission> permission_sel_all() throws NoResultException {
