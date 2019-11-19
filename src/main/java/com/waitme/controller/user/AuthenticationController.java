@@ -43,8 +43,6 @@ class AuthenticationController {
 		WMUser wmUser = userService.getSimpleWMUser(userName);
 		wmUser = userService.loginWMUser(wmUser, password);
 		
-		wmUser.setIconPath("https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png");
-		
 		return new RestResponse("ok", Map.of("user", wmUser));
 	}
 }

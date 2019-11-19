@@ -686,6 +686,7 @@ public class UserService {
 		retUser.setCompany(new Company(wmUser.getCompany().getId()));
 		retUser.setIconPath(wmUser.getIconPath());
 		retUser.setPosition(wmUser.getPosition());
+		retUser.setUserSettings(wmUser.getUserSettings());
 		return retUser;
 	}
 	
