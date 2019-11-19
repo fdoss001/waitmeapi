@@ -16,7 +16,7 @@
 	<description>Waitme API Server</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>12</java.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
 	</properties>
 

@@ -206,12 +206,12 @@ public class UserDAO {
 	/* *** END MODULES *** */
 	
 	/* *** SETTINGS *** */
-	public void employee_settings_ins(int companyid, int employeeid, int defaultPosModuleId) throws DuplicateException {
-		DBUtils.runSPHelper(companyid, spProps.getProperty("employee_settings_ins"), employeeid, (defaultPosModuleId == 0 ? null : defaultPosModuleId));
+	public void employee_settings_ins(int companyid, int employeeid, int defaultPosModuleId, int currentLocationId) throws DuplicateException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("employee_settings_ins"), employeeid, (defaultPosModuleId == 0 ? null : defaultPosModuleId), currentLocationId);
 	}
 	
-	public void employee_settings_upd(int companyid, int employeeid, String themePath, int defaultPosSubModuleId) {		
-		DBUtils.runSPHelper(companyid, spProps.getProperty("employee_settings_upd"), employeeid, themePath, defaultPosSubModuleId);
+	public void employee_settings_upd(int companyid, int employeeid, String themePath, int defaultPosSubModuleId, int currentLocationId) {		
+		DBUtils.runSPHelper(companyid, spProps.getProperty("employee_settings_upd"), employeeid, themePath, defaultPosSubModuleId, currentLocationId);
 	}
 	
 	public UserSettings employee_settings_sel(int companyid, int employeeid) throws NoResultException {

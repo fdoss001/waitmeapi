@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waitme.domain.WMDomainObject;
+import com.waitme.domain.restaurant.Location;
 
 /**
  * Class to represent an employee's settings
@@ -19,6 +20,7 @@ import com.waitme.domain.WMDomainObject;
 public class UserSettings extends WMDomainObject implements RowMapper<UserSettings> {
 	private String themePath;
 	private int defaultPosSubModuleId;
+	private Location currentLocation;
 
 	@JsonIgnore
 	private Logger log = LoggerFactory.getLogger(UserSettings.class);
@@ -46,12 +48,28 @@ public class UserSettings extends WMDomainObject implements RowMapper<UserSettin
 		this.defaultPosSubModuleId = defaultPosSubModuleId;
 	}
 
+	public Location getCurrentLocation() {
+		return currentLocation;
+	}
+
+	public void setCurrentLocation(Location currentLocation) {
+		this.currentLocation = currentLocation;
+	}
+
 	@Override
 	public UserSettings mapRow(ResultSet rs, int rowNum) throws SQLException {
 		UserSettings settings = new UserSettings();
 
 		try {settings.setThemePath(rs.getString("employee_settings_theme_path"));} catch(SQLException e) {log.debug("No theme path for settings");}
 		try {settings.setDefaultPosSubModuleId(rs.getInt("employee_settings_default_pos_sub_module_id"));} catch(SQLException e) {log.debug("No default pos module for settings");}
+		
+		//location
+		try {
+			rs.getString("employee_settings_current_location_id"); //to check if info is available. If it is, use mapper
+			Location loc = new Location();
+			loc = loc.mapRow(rs, rowNum);
+			settings.setCurrentLocation(loc);
+		} catch(SQLException e) {log.debug("No complete current location info for settings");}
 		
 		return settings;
 	}

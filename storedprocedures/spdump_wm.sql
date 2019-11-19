@@ -32,7 +32,7 @@ IN na VARCHAR(45),
 IN luun VARCHAR(45))
 BEGIN
 	
-	--Verify that the company name is unique
+	-- Verify that the company name is unique
 	SELECT COUNT(*) INTO @count FROM company WHERE UPPER(REPLACE(company_name, ' ', '')) = UPPER(REPLACE(na, ' ', ''));
 	IF @count > 0 THEN
 		SET @errortext = CONCAT("Duplicate entry '", na, "' for key 'uname_UNIQUE'");

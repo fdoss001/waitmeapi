@@ -505,7 +505,7 @@ BEGIN
 	LEFT JOIN timesheet_day td ON td.timesheet_day_employee_id = e.employee_id AND td.timesheet_day_dtm_out IS NULL
 	INNER JOIN waitme.company c ON c.company_id = e.employee_company_id
 	INNER JOIN waitme.company_settings cs ON cs.company_id = e.employee_company_id
-	LEFT JOIN location l ON l.location_id = pr.position_role_location_id
+	LEFT JOIN location l ON l.location_id = es.employee_settings_current_location_id
 	WHERE e.employee_uname = un;
 END$$
 DELIMITER ;  
@@ -515,7 +515,8 @@ DELIMITER $$
 CREATE PROCEDURE `employee_sel_all_basic_location`(
 IN lid INT(7))
 BEGIN
-	SELECT employee_id, employee_uname, employee_fname, employee_lname FROM employee e
+	SELECT e.employee_id, e.employee_uname, e.employee_fname, e.employee_lname, e.employee_active, 
+	pr.position_role_id, pr.position_role_code, pr.position_role_name FROM employee e
 	INNER JOIN position_role pr ON pr.position_role_id = e.employee_position_role_id
 	WHERE pr.position_role_location_id = lid;
 END$$
@@ -570,7 +571,7 @@ BEGIN
 	LEFT JOIN timesheet_day td ON td.timesheet_day_employee_id = e.employee_id AND td.timesheet_day_dtm_out IS NULL
 	INNER JOIN waitme.company c ON c.company_id = e.employee_company_id
 	INNER JOIN waitme.company_settings cs ON cs.company_id = e.employee_company_id
-	LEFT JOIN location l ON l.location_id = pr.position_role_location_id
+	LEFT JOIN location l ON l.location_id = es.employee_settings_current_location_id
 	WHERE e.employee_id = uid;
 END$$
 DELIMITER ;
@@ -587,7 +588,7 @@ BEGIN
 	LEFT JOIN timesheet_day td ON td.timesheet_day_employee_id = e.employee_id AND td.timesheet_day_dtm_out IS NULL
 	INNER JOIN waitme.company c ON c.company_id = e.employee_company_id
 	INNER JOIN waitme.company_settings cs ON cs.company_id = e.employee_company_id
-	LEFT JOIN location l ON l.location_id = pr.position_role_location_id
+	LEFT JOIN location l ON l.location_id = es.employee_settings_current_location_id
 	WHERE e.employee_pin = p;
 END$$
 DELIMITER ;
@@ -619,9 +620,11 @@ DROP procedure IF EXISTS `employee_settings_ins`;
 DELIMITER $$
 CREATE PROCEDURE `employee_settings_ins`(
 IN eid INT(10),
-IN dpm SMALLINT(4))
+IN dpm SMALLINT(4),
+IN clid INT(7))
 BEGIN
-	INSERT INTO employee_settings (employee_settings_employee_id, employee_settings_default_pos_sub_module_id) VALUES (eid, dpm);
+	INSERT INTO employee_settings (employee_settings_employee_id, employee_settings_default_pos_sub_module_id, employee_settings_current_location_id)
+	VALUES (eid, dpm, clid);
 END$$
 DELIMITER ;
   
@@ -642,17 +645,20 @@ DELIMITER $$
 CREATE PROCEDURE `employee_settings_upd`(
 IN uid INT(10),
 IN tp VARCHAR(255),
-IN dpm SMALLINT(4))
+IN dpm SMALLINT(4),
+IN clid INT(7))
 BEGIN
 	IF dpm < 0 THEN
 		UPDATE employee_settings SET
 		employee_settings_theme_path = tp,
-		employee_settings_default_pos_sub_module_id = null
+		employee_settings_default_pos_sub_module_id = null,
+		employee_settings_current_location_id = clid
 	    WHERE employee_settings_employee_id = uid;
     ELSE
 		UPDATE employee_settings SET
 		employee_settings_theme_path = tp,
-		employee_settings_default_pos_sub_module_id = dpm
+		employee_settings_default_pos_sub_module_id = dpm,
+		employee_settings_current_location_id = clid
 	    WHERE employee_settings_employee_id = uid;
     END IF;
 END$$

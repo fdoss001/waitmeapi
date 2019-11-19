@@ -9,7 +9,7 @@ BEGIN
 	LEFT JOIN timesheet_day td ON td.timesheet_day_employee_id = e.employee_id AND td.timesheet_day_dtm_out IS NULL
 	INNER JOIN waitme.company c ON c.company_id = e.employee_company_id
 	INNER JOIN waitme.company_settings cs ON cs.company_id = e.employee_company_id
-	LEFT JOIN location l ON l.location_id = pr.position_role_location_id
+	LEFT JOIN location l ON l.location_id = es.employee_settings_current_location_id
 	WHERE e.employee_uname = un;
 END$$
 DELIMITER ;

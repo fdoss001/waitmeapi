@@ -153,7 +153,7 @@ public class UserService {
 		}
 		//insert settings
 		log.debug("Inserting settings");
-		userDAO.employee_settings_ins(companyid, id, (wmUser.getUserSettings() == null ? 0 : wmUser.getUserSettings().getDefaultPosSubModuleId()));
+		userDAO.employee_settings_ins(companyid, id, (wmUser.getUserSettings() == null ? 0 : wmUser.getUserSettings().getDefaultPosSubModuleId()), (wmUser.getUserSettings() == null ? 0 : wmUser.getUserSettings().getCurrentLocation().getId()));
 		//no need to create a settings folder because this is done from the WMUser constructor
 
 		log.debug("Successfully created user");
@@ -268,7 +268,7 @@ public class UserService {
 	public void updateWMUserSettings(WMUser wmUser, UserSettings userSettings) {
 		log.debug("Updating settings for user '" + wmUser.getUname() + "'");
 		wmUser.setUserSettings(userSettings);
-		userDAO.employee_settings_upd(wmUser.getCompany().getId(), wmUser.getId(), userSettings.getThemePath(), userSettings.getDefaultPosSubModuleId());
+		userDAO.employee_settings_upd(wmUser.getCompany().getId(), wmUser.getId(), userSettings.getThemePath(), userSettings.getDefaultPosSubModuleId(), userSettings.getCurrentLocation().getId());
 		log.debug("Successfully updated user's settings.");
 	}
 	

@@ -19,7 +19,10 @@ import com.waitme.domain.user.WMUser;
 import com.waitme.domain.web.RestRequest;
 import com.waitme.domain.web.RestResponse;
 import com.waitme.exception.NoResultException;
+import com.waitme.service.AdminService;
 import com.waitme.service.UserService;
+import com.waitme.domain.user.Module;
+import com.waitme.domain.user.Position;
 
 /**
  * Class to represent an rest response to the client
@@ -33,6 +36,8 @@ import com.waitme.service.UserService;
 class AdminController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	AdminService adminService;
 	
 	Logger log = LoggerFactory.getLogger(AdminController.class);
 	
@@ -41,5 +46,33 @@ class AdminController {
 	public @ResponseBody RestResponse getAllEmployees(@RequestBody RestRequest request) throws NoResultException {
 		List<WMUser> employees = userService.getAllWMUsersBasic((int) request.getPayload().get("companyId"), (int) request.getPayload().get("locationId"));
 		return new RestResponse("ok", Map.of("employees", employees));
+	}
+	
+	@PostMapping(value="/getEmployeeById", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse getEmployeeById(@RequestBody RestRequest request) throws NoResultException {
+		WMUser wmUser = userService.getSimpleWMUser((int) request.getPayload().get("companyId"), (int) request.getPayload().get("id"));
+		return new RestResponse("ok", Map.of("employee", wmUser));
+	}
+	
+	@PostMapping(value="/getAllModulesForCompany", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse getAllModulesForCompany(@RequestBody RestRequest request) throws NoResultException {
+		List<Module> modules = adminService.getAllModules();
+		return new RestResponse("ok", Map.of("modules", modules));
+	}
+	
+	@PostMapping(value="/getAllActivePositionsForLocation", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse getAllActivePositionsForLocation(@RequestBody RestRequest request) throws NoResultException {
+		List<Position> modules = adminService.getAllPositions((int) request.getPayload().get("companyId"));
+		return new RestResponse("ok", Map.of("modules", modules));
+	}
+	
+	@PostMapping(value="/addUpdateEmployee", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody RestResponse addUpdateEmployee(@RequestBody RestRequest request) throws NoResultException {
+//		List<WMUser> employees = userService.getAllWMUsersBasic((int) request.getPayload().get("companyId"), (int) request.getPayload().get("locationId"));
+		return new RestResponse("ok", null);
 	}
 }
