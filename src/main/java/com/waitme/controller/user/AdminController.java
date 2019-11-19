@@ -66,7 +66,7 @@ class AdminController {
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody RestResponse getAllActivePositionsForLocation(@RequestBody RestRequest request) throws NoResultException {
 		List<Position> modules = adminService.getAllPositions((int) request.getPayload().get("companyId"));
-		return new RestResponse("ok", Map.of("modules", modules));
+		return new RestResponse("ok", Map.of("positions", modules));
 	}
 	
 	@PostMapping(value="/addUpdateEmployee", produces=MediaType.APPLICATION_JSON_VALUE)
