@@ -39,7 +39,6 @@ class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody RestResponse getUser(@RequestBody RestRequest request) throws NoResultException {
 		WMUser wmUser = userService.getSimpleWMUser((int) request.getPayload().get("companyId"), (int) request.getPayload().get("id"));
-		wmUser.setIconPath("https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png");
 		return new RestResponse("ok", Map.of("user", wmUser));
 	}
 	
