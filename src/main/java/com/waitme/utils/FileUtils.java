@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.regex.PatternSyntaxException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +77,13 @@ public class FileUtils {
 		//delete the old icon file if it exists
 		if (wmUser.getIconPath() != null) {
 			log.debug("The file already exists. Deleting");
-			String[] oldFileName = wmUser.getIconPath().split(File.separator);
+			String[] oldFileName;
+			try {
+				oldFileName = wmUser.getIconPath().split(File.separator);
+			} catch(PatternSyntaxException e) {
+				log.warn("Error due to windows upload. Resolving regex");
+				oldFileName = wmUser.getIconPath().split(File.separator + File.separator);
+			}
 			File oldFile = new File(usrPath + File.separator + oldFileName[oldFileName.length - 1]);
 			oldFile.delete();
 		}
