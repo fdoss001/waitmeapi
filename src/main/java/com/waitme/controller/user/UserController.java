@@ -23,8 +23,7 @@ import com.waitme.service.UserService;
 import com.waitme.utils.FileUtils;
 
 /**
- * Class to represent an rest response to the client
- * Every controller handling an rest call should wrap its reponse in this class
+ * Class to control all user related functions
  * @author Fernando Dos Santos
  * @version 1.0 2019-05-30
  * @since 1.0 2019-05-30

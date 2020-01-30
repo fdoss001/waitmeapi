@@ -20,8 +20,7 @@ import com.waitme.exception.NoResultException;
 import com.waitme.service.UserService;
 
 /**
- * Class to represent an rest response to the client
- * Every controller handling an rest call should wrap its reponse in this class
+ * Class to control all authentication
  * @author Fernando Dos Santos
  * @version 1.0 2019-05-30
  * @since 1.0 2019-05-30

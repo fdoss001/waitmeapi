@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,7 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 	private BigDecimal payAdjustment;
 	private String pinHash512, pinHash256;
 	private TimeSheet currentTimeSheet;
+	private Date hiringDate, lastLogin;
 	
 	private Map<String,SubModule> subModuleMap; //used for quick check of module permissions
 	
@@ -373,6 +375,22 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 	@JsonIgnore
 	public void setClockedIn() {} //empty for json
 	
+	public Date getHiringDate() {
+		return hiringDate;
+	}
+
+	public void setHiringDate(Date hiringDate) {
+		this.hiringDate = hiringDate;
+	}
+
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
 	@Override
 	public WMUser mapRow(ResultSet rs, int rowNum) throws SQLException {
 		WMUser user = new WMUser();
@@ -388,6 +406,8 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 		try {user.setPayAdjustment(rs.getBigDecimal("employee_pay_adjustment"));} catch(SQLException e) {log.debug("No pay_adjustment for user '" + user.getUname() + "'");}
 		try {user.setActive(rs.getBoolean("employee_active"));} catch(SQLException e) {log.debug("No active for user '" + user.getUname() + "'");}
 		try {user.setPin(rs.getInt("employee_pin"));} catch(SQLException e) {log.debug("No pin for user '" + user.getUname() + "'");}
+		try {user.setHiringDate(rs.getDate("employee_creation_dtm"));} catch(SQLException e) {log.debug("No creation dtm for user '" + user.getUname() + "'");}
+		try {user.setLastLogin(rs.getDate("employee_last_login_dtm"));} catch(SQLException e) {log.debug("No last login dtm for user'" + user.getUname() + "'");}
 		
 		//settings
 		try {
