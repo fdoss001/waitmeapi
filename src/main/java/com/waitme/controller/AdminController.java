@@ -1,4 +1,4 @@
-package com.waitme.controller.user;
+package com.waitme.controller;
 
 import java.util.List;
 import java.util.Map;
