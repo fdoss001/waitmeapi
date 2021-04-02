@@ -76,6 +76,10 @@ public class RestaurantManagementDAO {
 		DBUtils.updateHelper(companyid, spProps.getProperty("menu_upd"), menuid, code, name, active, dtmsAvailable, locationid, updaterid);
 	}
 	
+	public void menu_tog_act(int companyid, int menuid, boolean active, int updaterid) throws NoResultException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("menu_tog_act"), menuid, active, updaterid);
+	}
+	
 	public void menu_category_del_all_menu(int companyid, int menuid) {
 		DBUtils.runSPHelper(companyid, spProps.getProperty("menu_category_del_all_menu"), menuid);
 	}
@@ -110,6 +114,10 @@ public class RestaurantManagementDAO {
 	
 	public void category_upd(int companyid, int categoryid, String code, String name, boolean active, int updaterid) throws DuplicateException {
 		DBUtils.updateHelper(companyid, spProps.getProperty("category_upd"), categoryid, code, name, active, updaterid);
+	}
+	
+	public void category_tog_act(int companyid, int categoryid, boolean active, int updaterid) throws NoResultException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("category_tog_act"), categoryid, active, updaterid);
 	}
 	
 	public void category_sub_category_del_all_category(int companyid, int categoryid) {
@@ -147,6 +155,10 @@ public class RestaurantManagementDAO {
 	public void sub_category_upd(int companyid, int subcategoryid, String code, String name, boolean active, int updaterid) throws DuplicateException {
 		DBUtils.updateHelper(companyid, spProps.getProperty("sub_category_upd"), subcategoryid, code, name, active, updaterid);
 	}
+
+	public void sub_category_tog_act(int companyid, int subcategoryid, boolean active, int updaterid) throws NoResultException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("sub_category_tog_act"), subcategoryid, active, updaterid);
+	}
 	
 	public void sub_category_meal_del_all_sub_category(int companyid, int subcategoryid) {
 		DBUtils.runSPHelper(companyid, spProps.getProperty("sub_category_meal_del_all_sub_category"), subcategoryid);
@@ -182,6 +194,10 @@ public class RestaurantManagementDAO {
 	
 	public void meal_upd(int companyid, int mealid, String code, String name, boolean active, int updaterid) throws DuplicateException {
 		DBUtils.updateHelper(companyid, spProps.getProperty("meal_upd"), mealid, code, name, active, updaterid);
+	}
+
+	public void meal_tog_act(int companyid, int mealid, boolean active, int updaterid) throws NoResultException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("meal_tog_act"), mealid, active, updaterid);
 	}
 	
 	public void meal_item_del_all_meal(int companyid, int mealid) {
@@ -240,6 +256,10 @@ public class RestaurantManagementDAO {
 	public void item_upd(int companyid, int itemid, String code, String name, String description, BigDecimal basePrice, boolean active, int updaterid) throws DuplicateException {
 		DBUtils.updateHelper(companyid, spProps.getProperty("item_upd"), itemid, code, name, description, basePrice, active, updaterid);
 	}
+
+	public void item_tog_act(int companyid, int itemid, boolean active, int updaterid) throws NoResultException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("item_tog_act"), itemid, active, updaterid);
+	}
 	
 	public void item_item_option_del_all_item(int companyid, int itemid) {
 		DBUtils.runSPHelper(companyid, spProps.getProperty("item_item_option_del_all_item"), itemid);
@@ -275,6 +295,10 @@ public class RestaurantManagementDAO {
 	
 	public void item_option_upd(int companyid, int itemOptionId, String code, String name, String description, BigDecimal basePrice, boolean active, int updaterid) throws DuplicateException {
 		DBUtils.updateHelper(companyid, spProps.getProperty("item_option_upd"), itemOptionId, code, name, description, basePrice, active, updaterid);
+	}
+
+	public void item_option_tog_act(int companyid, int itemOptionId, boolean active, int updaterid) throws NoResultException {
+		DBUtils.runSPHelper(companyid, spProps.getProperty("item_option_tog_act"), itemOptionId, active, updaterid);
 	}
 	
 	public void item_option_del(int companyid, int itemOptionId) throws DeleteException {

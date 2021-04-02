@@ -709,6 +709,23 @@ public class RestaurantManagementService {
 	}
 	
 	/**
+	 * Activates or Deactivate an food list holder object
+	 * @param objectId the id of the object to toggle
+	 * @param companyId the company the object belongs to
+	 * @param userId the id of the updater
+	 * @throws NoResultException if object cannot be found or does not exist
+	 */
+	public void toggleActivateObject(FoodListHolder object, boolean active, int objectId, int companyId, int userId) throws NoResultException {
+		String clazz = object.getClass().getSimpleName();
+		if (clazz.equals("Menu")) {restaurantManagementDAO.menu_tog_act(companyId, objectId, active, userId);}
+		else if (clazz.equals("Category")) {restaurantManagementDAO.category_tog_act(companyId, objectId, active, userId);}
+		else if (clazz.equals("SubCategory")) {restaurantManagementDAO.sub_category_tog_act(companyId, objectId, active, userId);}
+		else if (clazz.equals("Meal")) {restaurantManagementDAO.meal_tog_act(companyId, objectId, active, userId);}
+		else if (clazz.equals("Item")) {restaurantManagementDAO.item_tog_act(companyId, objectId, active, userId);}
+		else if (clazz.equals("ItemOption")) {restaurantManagementDAO.item_option_tog_act(companyId, objectId, active, userId);}
+	}
+	
+	/**
 	 * Permanently deletes an option from the DB.
 	 * WARNING! This should rarely be done. All order history with this option must be deleted first
 	 * Use with extreme caution. Deactivating an option is usually preferred. 
