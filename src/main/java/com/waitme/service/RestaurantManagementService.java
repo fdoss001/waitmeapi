@@ -657,8 +657,34 @@ public class RestaurantManagementService {
 	 * @throws NoResultException if the option with id is not found
 	 */
 	public ItemOption getItemOption(int companyid, int optionid) throws NoResultException {
-		ItemOption item = restaurantManagementDAO.item_option_sel(companyid, optionid);		
-		return item;
+		ItemOption option = restaurantManagementDAO.item_option_sel(companyid, optionid);		
+		return option;
+	}
+	
+	/**
+	 * Creates a copy of an option
+	 * @param optionId the id of the option to copy
+	 * @return the new option object
+	 * @throws NoResultException if the option with id is not found
+	 * @throws DuplicateException will not happen
+	 */
+	public ItemOption copyItemOption(int optionId, int companyId, int userId) throws NoResultException, DuplicateException {
+		log.debug("Copying option with id '" + optionId + "'.");
+		
+		ItemOption option = restaurantManagementDAO.item_option_sel(companyId, optionId);
+		int nextId = restaurantManagementDAO.item_option_sel_next_id(companyId);
+		option.setCode(option.getCode() + "-" + nextId);
+		
+		//nutrition facts
+		NutritionFacts nf = option.getNutritionFacts();
+		int nutritionFactsId = restaurantManagementDAO.nutrition_facts_ins(companyId,nf.getServing_size(),nf.getServings(),nf.getCalories(),nf.getFat_calories(),nf.getTotal_fat(), nf.getSaturated_fat(),nf.getTrans_fat(), nf.getCholesterol(), nf.getSodium(), nf.getPotassium(),nf.getTotal_carb(), nf.getDietary_fiber(),nf.getSugars(), nf.getSugar_alcohols(),nf.getProtein(), nf.getVitaminA(),nf.getVitaminB6(), nf.getVitaminB12(),nf.getVitaminC(), nf.getVitaminE(),nf.getVitaminK(),nf.getFolate(), nf.getMagnesium(),nf.getThiamin(),nf.getZinc(),nf.getCalcium(),nf.getRiboflavin(),nf.getBiotin(),nf.getIron(),nf.getNiacin(),nf.getPantothenic_acid(),nf.getPhosphorus());
+		nf.setId(nutritionFactsId);
+		
+		//the DB insert
+		int id = restaurantManagementDAO.item_option_ins(companyId, option.getCode(), option.getName(), option.getDescription(), nutritionFactsId, option.getPrice(), option.isActive(), userId);			
+		option.setId(id);
+		log.debug("Successfully copied option");
+		return option;
 	}
 	
 	/**

@@ -281,6 +281,10 @@ public class RestaurantManagementDAO {
 		return DBUtils.objectSelectHelper(companyid, spProps.getProperty("item_option_sel"), new ItemOption(), optionid);
 	}
 	
+	public int item_option_sel_next_id(int companyid) throws NoResultException {
+		return DBUtils.primitiveSelectHelper(companyid, spProps.getProperty("item_option_sel_next_id"), Integer.class);
+	}
+	
 	public List<ItemOption> item_option_sel_all_min(int companyid) throws NoResultException {
 		return DBUtils.listSelectHelper(companyid, spProps.getProperty("item_option_sel_all_min"), new ItemOption());
 	}
