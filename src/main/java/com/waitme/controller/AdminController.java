@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,7 @@ import com.waitme.domain.user.WMUser;
  * @version 1.0 2020-01-29
  * @since 1.0 2020-01-29
  */
+@CrossOrigin(origins = "http://localhost:8000", maxAge = 3600)
 @RestController
 @RequestMapping("/admin")
 class AdminController {
