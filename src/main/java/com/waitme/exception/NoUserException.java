@@ -3,8 +3,6 @@ package com.waitme.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.waitme.exception.NoResultException;
-
 /**
  * Class to represent an exception where a user doesn't exist
  * @author Fernando Dos Santos

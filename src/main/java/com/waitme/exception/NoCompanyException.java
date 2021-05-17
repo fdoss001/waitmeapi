@@ -1,7 +1,5 @@
 package com.waitme.exception;
 
-import com.waitme.exception.NoResultException;
-
 /**
  * Class to represent an exception where a company doesn't exist
  * @author Fernando Dos Santos

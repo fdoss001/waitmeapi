@@ -1,7 +1,5 @@
 package com.waitme.exception;
 
-import com.waitme.exception.NoResultException;
-
 /**
  * Class to represent an exception where a user has no permissions
  * @author Fernando Dos Santos
