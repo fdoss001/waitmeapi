@@ -24,12 +24,10 @@
 	<build>
 	   <finalName>waitme</finalName>
 		<plugins>
-		<!-- 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		 -->
 		</plugins>
 	</build>
    
@@ -46,12 +44,13 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-		<!-- Tomcat Build -->
+		<!-- Tomcat Build 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		-->
 		
 		<!-- For verifying the server is up. Simple landing page -->
 		<dependency>
