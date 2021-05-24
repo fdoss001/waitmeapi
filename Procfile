@@ -1,1 +1,1 @@
-web: java -jar target/waitme.jar --server.port=8080
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/waitme.jar
