@@ -19,6 +19,7 @@ public class Constants {
 	}
 	
 	public class DB {
+		public static final String PREFIX = "freedbtech_";
 		public static final String ADMIN_USER_EXT = "DBAdmin";
 		public static final String ADMIN_PASS_EXT = "1!";
 		public static final String DB_STRUCTURE_SQL = "sqldump/AppStructure.sql";

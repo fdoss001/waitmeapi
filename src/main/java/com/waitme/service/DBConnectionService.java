@@ -76,10 +76,10 @@ public class DBConnectionService {
 		log.debug("Initializing DB connection for schema '" + dbname + "'");
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		String dburl = "jdbc:mysql://" + dbProps.getProperty("host") + ":" + dbProps.getProperty("port") + "/" + dbname + "?noAccessToProcedureBodies=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=" + TimeZone.getDefault().getID();
+		String dburl = "jdbc:mysql://" + dbProps.getProperty("host") + ":" + dbProps.getProperty("port") + "/" + Constants.DB.PREFIX + dbname + "?noAccessToProcedureBodies=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=" + TimeZone.getDefault().getID();
 		log.debug("The connection string is:\n\t" + dburl);
 		dataSource.setUrl(dburl);		
-		dataSource.setUsername(dbname.substring(0,1).toUpperCase() + dbname.substring(1) + Constants.DB.ADMIN_USER_EXT);
+		dataSource.setUsername(Constants.DB.PREFIX + dbname.substring(0,1).toUpperCase() + dbname.substring(1) + Constants.DB.ADMIN_USER_EXT);
 		dataSource.setPassword(dbname.substring(0,1).toUpperCase() + dbname.substring(1) + Constants.DB.ADMIN_PASS_EXT);
 		
 		return dataSource;
