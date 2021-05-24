@@ -37,9 +37,8 @@ public class Constants {
 		public static final String POS_HOST_STAND = "HostStand";
 	}
 	
-//	public static final String BASE_PATH = Constants.class.getClassLoader().getResource("").getPath();
-//	public static final TimeZone TIME_ZONE = TimeZone.getDefault();
-	public static final String BASE_PATH = "BasePath";
+	public static final String BASE_PATH = Constants.class.getClassLoader().getResource("").getPath();
+	public static final TimeZone TIME_ZONE = TimeZone.getDefault();
 	
 	public class POS {
 		public static final int MODULE_ID = 4;
