@@ -25,7 +25,7 @@ import com.waitme.exception.NoResultException;
  * @version 1.0 2019-02-08
  * @since 1.0 2019-01-04
  */
-//@Service
+@Service
 public class DBConnectionService {
 	public static DriverManagerDataSource WMDATASOURCE;
 	public static Map<Integer, DriverManagerDataSource> DATASOURCE_POOL;
