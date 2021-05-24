@@ -10,31 +10,31 @@ public class WMLogger {
 	
 	public WMLogger(Class<?> loggingClass) {
 		this.loggingClass = loggingClass;
-		log = LoggerFactory.getLogger(loggingClass);
+//		log = LoggerFactory.getLogger(loggingClass);
 	}
 	
 	public void debug(String msg) {
-		log.debug(msg);
+//		log.debug(msg);
 		System.out.println(msg);
 	}
 	
 	public void info(String msg) {
-		log.info(msg);
+//		log.info(msg);
 		System.out.println(msg);
 	}
 	
 	public void warn(String msg) {
-		log.warn(msg);
+//		log.warn(msg);
 		System.out.println(msg);
 	}
 	
 	public void error(String msg) {
-		log.error(msg);
+//		log.error(msg);
 		System.err.println(msg);
 	}
 	
 	public void error(String msg, Exception e) {
-		log.error(msg);
+//		log.error(msg);
 		System.err.println(msg);
 		e.printStackTrace();
 	}
