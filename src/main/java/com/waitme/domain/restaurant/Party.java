@@ -1,11 +1,10 @@
 package com.waitme.domain.restaurant;
 
 import java.sql.ResultSet;
+import com.waitme.utils.WMLogger;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,7 +24,7 @@ public class Party extends WMDomainObject implements IActivatable, RowMapper<Par
 	private boolean active;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(Party.class);
+	private WMLogger log = new WMLogger(Party.class);
 	
 	public Party() {}
 	

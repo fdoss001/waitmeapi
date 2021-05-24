@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 
 import com.waitme.domain.user.WMUser;
@@ -29,7 +27,7 @@ public class ServletUtils {
 	 */
 	public static void servletInit(HttpServletRequest request, Model model, Class<?> caller) {
 		HttpSession session = request.getSession();
-		Logger log = LoggerFactory.getLogger(caller);
+		WMLogger log = new WMLogger(caller);
 		try {
 			WMUser wmUser = (WMUser) session.getAttribute("wmUser");
 			log.info(caller.getName() + ": " + wmUser.getUname() + " -- " + session.getId());

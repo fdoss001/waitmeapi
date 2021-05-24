@@ -11,8 +11,6 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.util.regex.PatternSyntaxException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.waitme.config.Constants;
 import com.waitme.config.WMProperties;
 import com.waitme.domain.restaurant.Company;
@@ -26,7 +24,7 @@ import com.waitme.domain.user.WMUser;
  */
 public class FileUtils {
 
-	private static Logger log = LoggerFactory.getLogger(FileUtils.class);
+	private static WMLogger log = new WMLogger(FileUtils.class);
 	private static Properties messageProps = new WMProperties("messages.properties");
 	
 	/**

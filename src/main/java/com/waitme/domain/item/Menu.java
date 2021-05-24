@@ -4,13 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waitme.domain.restaurant.IActivatable;
 import com.waitme.domain.restaurant.WeekTimeRange;
+import com.waitme.utils.WMLogger;
 
 /**
  * Class to represent a menu with categories
@@ -24,7 +23,7 @@ public class Menu extends FoodListHolder implements IActivatable, RowMapper<Menu
 	private WeekTimeRange dateTimesAvailable;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(Menu.class);
+	private WMLogger log = new WMLogger(Menu.class);
 	
 	public Menu() {}
 	

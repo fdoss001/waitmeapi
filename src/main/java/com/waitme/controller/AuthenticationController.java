@@ -1,8 +1,6 @@
 package com.waitme.controller;
 
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +16,7 @@ import com.waitme.domain.web.RestResponse;
 import com.waitme.exception.AuthenticationException;
 import com.waitme.exception.NoResultException;
 import com.waitme.service.UserService;
+import com.waitme.utils.WMLogger;
 
 /**
  * Class to control all authentication
@@ -31,7 +30,7 @@ class AuthenticationController {
 	@Autowired
 	UserService userService;
 	
-	Logger log = LoggerFactory.getLogger(AuthenticationController.class);
+	WMLogger log = new WMLogger(AuthenticationController.class);
 	
 	@PostMapping(value="/login")
 	@ResponseStatus(HttpStatus.OK)

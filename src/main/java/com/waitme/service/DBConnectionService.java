@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TimeZone;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Service;
@@ -17,6 +15,7 @@ import com.waitme.config.WMProperties;
 import com.waitme.domain.restaurant.Company;
 import com.waitme.persistence.UserDAO;
 import com.waitme.utils.DBUtils;
+import com.waitme.utils.WMLogger;
 import com.waitme.exception.NoResultException;
 
 /**
@@ -31,7 +30,7 @@ public class DBConnectionService {
 	public static DriverManagerDataSource WMDATASOURCE;
 	public static Map<Integer, DriverManagerDataSource> DATASOURCE_POOL;
 	private static Properties spProps, dbProps;
-	private static Logger log = LoggerFactory.getLogger(DBConnectionService.class);
+	private static WMLogger log = new WMLogger(DBConnectionService.class);
 	@Autowired
 	UserDAO userDao;
 	

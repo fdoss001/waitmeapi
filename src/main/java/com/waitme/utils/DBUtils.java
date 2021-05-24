@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.UncategorizedSQLException;
@@ -25,7 +23,7 @@ import com.waitme.service.DBConnectionService;
  * @since 1.0 2019-01-04
  */
 public class DBUtils {
-	private static Logger log = LoggerFactory.getLogger(DBUtils.class);
+	private static WMLogger log = new WMLogger(DBUtils.class);
 	
 	/**
 	 * Gets the jdbc template for the given data source

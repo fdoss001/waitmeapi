@@ -1,7 +1,6 @@
 package com.waitme.domain.event;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.waitme.utils.WMLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,7 @@ import com.waitme.service.UserService;
 public class WMUserLoginEventListener {
 	@Autowired
 	private UserService userService;
-	Logger log = LoggerFactory.getLogger(WMUserLoginEventListener.class);
+	WMLogger log = new WMLogger(WMUserLoginEventListener.class);
 	
 	@EventListener
 	public void onWMUserLoginEvent(WMUserLoginEvent event) {

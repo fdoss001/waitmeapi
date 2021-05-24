@@ -5,8 +5,6 @@ import java.util.Locale;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,6 +14,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import com.waitme.config.Constants;
+import com.waitme.utils.WMLogger;
 
 //TODO fix email template resources
 /**
@@ -30,7 +29,7 @@ public class EmailService {
 	private JavaMailSender mailSender;
 	@Autowired
 	private TemplateEngine htmlTemplateEngine;
-	private Logger log = LoggerFactory.getLogger(EmailService.class);
+	private WMLogger log = new WMLogger(EmailService.class);
 	
 	/**
 	 * Sends a password reset email

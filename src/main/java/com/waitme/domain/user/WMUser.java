@@ -1,6 +1,7 @@
 package com.waitme.domain.user;
 
 import java.io.File;
+import com.waitme.utils.WMLogger;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -13,8 +14,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -58,7 +57,7 @@ public class WMUser extends WMDomainObject implements IActivatable, RowMapper<WM
 	Properties props = new WMProperties("user.properties");;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(WMUser.class);
+	private WMLogger log = new WMLogger(WMUser.class);
 	
 	public WMUser() {}
 	

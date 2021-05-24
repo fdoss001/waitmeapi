@@ -5,11 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.waitme.utils.WMLogger;
 
 /**
  * This is different than an item. It's an item in a meal.
@@ -26,7 +25,7 @@ public class ItemInMeal extends Food implements RowMapper<ItemInMeal> {
 	private List<OptionOnItem> options;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(ItemInMeal.class);
+	private WMLogger log = new WMLogger(ItemInMeal.class);
 	
 	public ItemInMeal() {}
 	

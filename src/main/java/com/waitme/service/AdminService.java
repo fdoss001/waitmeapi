@@ -3,8 +3,6 @@ package com.waitme.service;
 import java.util.List;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +18,7 @@ import com.waitme.exception.DeleteException;
 import com.waitme.exception.DuplicateException;
 import com.waitme.exception.NoPositionException;
 import com.waitme.persistence.AdminDAO;
+import com.waitme.utils.WMLogger;
 import com.waitme.exception.NoResultException;
 
 /**
@@ -35,7 +34,7 @@ public class AdminService {
 	@Autowired
 	RestaurantManagementService restaurantManagementService;
 	Properties messageProps = new WMProperties("messages.properties");
-	private Logger log = LoggerFactory.getLogger(AdminService.class);
+	private WMLogger log = new WMLogger(AdminService.class);
 	
 	public AdminService(AdminDAO ad) {
 		adminDAO = ad;

@@ -1,10 +1,9 @@
 package com.waitme.domain.user;
 
 import java.sql.ResultSet;
+import com.waitme.utils.WMLogger;
 import java.sql.SQLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,7 +22,7 @@ public class UserSettings extends WMDomainObject implements RowMapper<UserSettin
 	private Location currentLocation;
 
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(UserSettings.class);
+	private WMLogger log = new WMLogger(UserSettings.class);
 	
 	public UserSettings() {}
 

@@ -3,9 +3,6 @@ package com.waitme.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.waitme.domain.restaurant.IActivatable;
 
 /**
@@ -15,7 +12,7 @@ import com.waitme.domain.restaurant.IActivatable;
  * @since 1.0 2019-02-28
  */
 public class RestaurantUtils {
-	private static Logger log = LoggerFactory.getLogger(RestaurantUtils.class);
+	private static WMLogger log = new WMLogger(RestaurantUtils.class);
 	/**
 	 * Removes inactive objects from a list of activatable objects
 	 * @param fullList the list of all objects

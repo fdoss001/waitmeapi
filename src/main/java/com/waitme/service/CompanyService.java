@@ -3,8 +3,6 @@ package com.waitme.service;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +14,7 @@ import com.waitme.exception.DuplicateException;
 import com.waitme.exception.NoResultException;
 import com.waitme.persistence.CompanyDAO;
 import com.waitme.utils.DBUtils;
+import com.waitme.utils.WMLogger;
 
 /**
  * Service class for company related functions
@@ -25,7 +24,7 @@ import com.waitme.utils.DBUtils;
  */
 @Service
 public class CompanyService {
-	Logger log = LoggerFactory.getLogger(CompanyService.class);
+	WMLogger log = new WMLogger(CompanyService.class);
 	private Properties messageProps;
 	
 	@Autowired

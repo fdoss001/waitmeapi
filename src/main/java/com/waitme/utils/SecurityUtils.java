@@ -15,9 +15,6 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Utility class for reusabilty when doing security functions
  * @author Fernando Dos Santos
@@ -25,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @since 1.0 2019-01-30
  */
 public class SecurityUtils {
-	private static Logger log = LoggerFactory.getLogger(SecurityUtils.class);
+	private static WMLogger log = new WMLogger(SecurityUtils.class);
 	
 	/**
 	 * Generates a completely random byte array for use as a salt.

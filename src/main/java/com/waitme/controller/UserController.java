@@ -1,10 +1,9 @@
 package com.waitme.controller;
 
 import java.util.Base64;
+import com.waitme.utils.WMLogger;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,7 +33,7 @@ class UserController {
 	@Autowired
 	UserService userService;
 	
-	Logger log = LoggerFactory.getLogger(UserController.class);
+	WMLogger log = new WMLogger(UserController.class);
 	
 	@PostMapping(value="/getUser", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)

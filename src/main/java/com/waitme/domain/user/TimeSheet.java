@@ -1,11 +1,10 @@
 package com.waitme.domain.user;
 
 import java.sql.ResultSet;
+import com.waitme.utils.WMLogger;
 import java.sql.SQLException;
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,7 +21,7 @@ public class TimeSheet extends WMDomainObject implements RowMapper<TimeSheet> {
 	private Date startOfWeek, timeIn, timeOut, breakStart, breakEnd;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(TimeSheet.class);
+	private WMLogger log = new WMLogger(TimeSheet.class);
 	
 	public TimeSheet() {}
 	

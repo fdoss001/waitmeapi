@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.waitme.utils.WMLogger;
 
 /**
  * This is different than an option. It's an option on an item.
@@ -23,7 +22,7 @@ public class OptionOnItem extends Food implements RowMapper<OptionOnItem> {
 	private BigDecimal priceAdjustment;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(OptionOnItem.class);
+	private WMLogger log = new WMLogger(OptionOnItem.class);
 	
 	public OptionOnItem() {}
 	

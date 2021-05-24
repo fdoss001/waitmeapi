@@ -5,11 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.waitme.utils.WMLogger;
 
 /**
  * This is different than an item. It's an item in an order.
@@ -25,7 +24,7 @@ public class ItemInOrder extends Food implements RowMapper<ItemInOrder> {
 	private List<OptionOnOrderItem> options;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(ItemInOrder.class);
+	private WMLogger log = new WMLogger(ItemInOrder.class);
 	
 	public ItemInOrder() {} //dummy constructor for json mapping
 	

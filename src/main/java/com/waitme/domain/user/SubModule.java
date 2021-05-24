@@ -1,9 +1,8 @@
 package com.waitme.domain.user;
 
 import java.sql.ResultSet;
+import com.waitme.utils.WMLogger;
 import java.sql.SQLException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,7 +21,7 @@ public class SubModule extends WMDomainObject implements RowMapper<SubModule> {
 	private boolean sel, ins, upd, del;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(SubModule.class);
+	private WMLogger log = new WMLogger(SubModule.class);
 	
 	public SubModule() {}
 	

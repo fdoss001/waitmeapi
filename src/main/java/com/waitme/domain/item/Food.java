@@ -4,10 +4,8 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.waitme.utils.WMLogger;
 
 /**
  * An abstract class to represent any food item
@@ -26,7 +24,7 @@ public abstract class Food extends FoodListHolder {
 	private String description;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(Food.class);
+	private WMLogger log = new WMLogger(Food.class);
 	
 	public Food() {}
 	

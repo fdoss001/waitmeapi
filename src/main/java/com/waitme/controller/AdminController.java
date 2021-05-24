@@ -5,8 +5,6 @@ import java.util.Map;
 
 import javax.websocket.server.PathParam;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +21,7 @@ import com.waitme.domain.web.RestRequest;
 import com.waitme.domain.web.RestResponse;
 import com.waitme.exception.NoResultException;
 import com.waitme.service.RestaurantManagementService;
+import com.waitme.utils.WMLogger;
 import com.waitme.domain.item.ItemOption;
 import com.waitme.domain.item.Menu;
 import com.waitme.domain.user.WMUser;
@@ -40,7 +39,7 @@ class AdminController {
 	@Autowired
 	RestaurantManagementService restaurantManagementService;
 	
-	Logger log = LoggerFactory.getLogger(AdminController.class);
+	WMLogger log = new WMLogger(AdminController.class);
 	
 	@GetMapping(value="/getAllMenus", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)

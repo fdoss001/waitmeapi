@@ -1,6 +1,7 @@
 package com.waitme.service;
 
 import java.util.ArrayList;
+import com.waitme.utils.WMLogger;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,8 +11,6 @@ import java.util.Properties;
 
 import javax.security.auth.login.FailedLoginException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +57,7 @@ public class UserService {
 	AdminService adminService;
 	@Autowired
 	CompanyService companyService;
-	private Logger log = LoggerFactory.getLogger(UserService.class);
+	private WMLogger log = new WMLogger(UserService.class);
 	private Properties messageProps;
 	
 	private Map<Integer, String> loggedInUsers;

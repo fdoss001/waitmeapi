@@ -1,12 +1,11 @@
 package com.waitme.service;
 
 import java.util.ArrayList;
+import com.waitme.utils.WMLogger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,7 @@ import com.waitme.exception.NoResultException;
 public class RestaurantManagementService {
 	@Autowired
 	RestaurantManagementDAO restaurantManagementDAO;
-	private Logger log = LoggerFactory.getLogger(RestaurantManagementService.class);
+	private WMLogger log = new WMLogger(RestaurantManagementService.class);
 	private Properties messageProps = new WMProperties("messages.properties");
 	
 	public RestaurantManagementService() {}

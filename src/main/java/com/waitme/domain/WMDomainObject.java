@@ -1,11 +1,9 @@
 package com.waitme.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.waitme.utils.WMLogger;
 
 /**
  * Base class to every domain object in WaitMe
@@ -15,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public abstract class WMDomainObject {	
 	@JsonIgnore
-	Logger log = LoggerFactory.getLogger(WMDomainObject.class);
+	WMLogger log = new WMLogger(WMDomainObject.class);
 	
 	public WMDomainObject() {} //needed for JSON
 	

@@ -5,14 +5,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.waitme.domain.WMDomainObject;
 import com.waitme.domain.user.PostalAddress;
+import com.waitme.utils.WMLogger;
 
 /**
  * Class to represent a restaurant location
@@ -31,7 +30,7 @@ public class Location extends WMDomainObject implements IActivatable, RowMapper<
 	private List<Table> tables;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(Location.class);
+	private WMLogger log = new WMLogger(Location.class);
 	
 	public Location() {}
 	

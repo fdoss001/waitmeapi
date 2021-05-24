@@ -1,11 +1,9 @@
 package com.waitme.config;
 
 import java.io.IOException;
+import com.waitme.utils.WMLogger;
 import java.io.InputStream;
 import java.util.Properties;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Custom properties class that reads from the given prop file
@@ -16,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public class WMProperties extends Properties {
 	private static final long serialVersionUID = -519172386901524410L;
 	private InputStream inputStream;
-	Logger log = LoggerFactory.getLogger(WMProperties.class);
+	WMLogger log = new WMLogger(WMProperties.class);
  
 	public WMProperties(String propFileName) {
  

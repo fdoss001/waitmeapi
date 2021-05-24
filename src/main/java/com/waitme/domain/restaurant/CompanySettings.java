@@ -3,12 +3,11 @@ package com.waitme.domain.restaurant;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waitme.domain.WMDomainObject;
+import com.waitme.utils.WMLogger;
 
 /**
  * Class to represent a company's settings
@@ -20,7 +19,7 @@ public class CompanySettings extends WMDomainObject implements RowMapper<Company
 	private String logoPath, themePath;
 
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(Company.class);
+	private WMLogger log = new WMLogger(Company.class);
 	
 	public CompanySettings() {}
 	

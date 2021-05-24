@@ -3,12 +3,10 @@ package com.waitme.domain.item;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waitme.domain.WMDomainObject;
 import com.waitme.domain.restaurant.IActivatable;
+import com.waitme.utils.WMLogger;
 
 /**
  * An abstract class to represent any item that has a code, name, id, and active
@@ -23,7 +21,7 @@ public abstract class FoodListHolder extends WMDomainObject implements IActivata
 	private boolean active;
 	
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(FoodListHolder.class);
+	private WMLogger log = new WMLogger(FoodListHolder.class);
 	
 	public FoodListHolder() {}
 	

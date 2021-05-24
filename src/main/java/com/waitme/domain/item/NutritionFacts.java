@@ -3,12 +3,11 @@ package com.waitme.domain.item;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waitme.domain.WMDomainObject;
+import com.waitme.utils.WMLogger;
 
 /**
  * Class to represent a set of nutrition facts for a food item
@@ -22,7 +21,7 @@ public class NutritionFacts extends WMDomainObject implements RowMapper<Nutritio
 	String serving_size;
 
 	@JsonIgnore
-	private Logger log = LoggerFactory.getLogger(NutritionFacts.class);
+	private WMLogger log = new WMLogger(NutritionFacts.class);
 	
 	public NutritionFacts() {}
 	

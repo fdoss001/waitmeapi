@@ -1,11 +1,10 @@
 package com.waitme.service;
 
 import javax.servlet.http.HttpSession;
+import com.waitme.utils.WMLogger;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -24,7 +23,7 @@ import com.waitme.domain.user.WMUser;
 public class WMHttpSessionListener implements HttpSessionListener, ApplicationContextAware {
 	@Autowired
 	UserService userService;
-	Logger log = LoggerFactory.getLogger(WMHttpSessionListener.class);
+	WMLogger log = new WMLogger(WMHttpSessionListener.class);
 	
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
