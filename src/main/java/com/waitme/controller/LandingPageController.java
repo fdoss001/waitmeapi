@@ -20,14 +20,11 @@ public class LandingPageController {
 	
 	WMLogger log = new WMLogger(LandingPageController.class);
 	
-//	@GetMapping("/")
-	@RequestMapping("/")
-    @ResponseBody
+	@GetMapping("/")
 	public String landingPage(Model model) {
-//		log.debug("Base Path = " + Constants.BASE_PATH);
-		System.out.println("Just hit landing page");
-//		model.addAttribute("appName", appName);
-//		model.addAttribute("version", version);
+		log.debug("Base Path = " + Constants.BASE_PATH);
+		model.addAttribute("appName", appName);
+		model.addAttribute("version", version);
 		return "landing";
 	}
 	
