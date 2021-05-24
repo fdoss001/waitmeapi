@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.waitme.config.Constants;
 import com.waitme.utils.WMLogger;
@@ -18,11 +20,14 @@ public class LandingPageController {
 	
 	WMLogger log = new WMLogger(LandingPageController.class);
 	
-	@GetMapping("/")
+//	@GetMapping("/")
+	@RequestMapping("/")
+    @ResponseBody
 	public String landingPage(Model model) {
-		log.debug("Base Path = " + Constants.BASE_PATH);
-		model.addAttribute("appName", appName);
-		model.addAttribute("version", version);
+//		log.debug("Base Path = " + Constants.BASE_PATH);
+		System.out.println("Just hit landing page");
+//		model.addAttribute("appName", appName);
+//		model.addAttribute("version", version);
 		return "landing";
 	}
 	
